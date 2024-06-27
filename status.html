@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lain - status</title>
+	<link rel="shortcut icon" href="https://lains.win/lain.png">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Work Sans', sans-serif;
+            color: #fff;
+            margin: 0;
+            background: linear-gradient(to bottom right, #101010, #1a1a1a, #101010, #1a1a1a, #101010);
+            background-size: 400% 400%;
+            animation: gradientShift 15s infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0c0c0c;
+    padding: 20px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar .left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .left img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.navbar .left span {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.navbar .middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.navbar .middle button {
+    margin: 0 10px;
+    background-color: #1a1a1a;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.navbar .middle button:hover {
+    background-color: #333;
+}
+
+.navbar .right {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.navbar .right button {
+    background-color: #5865F2;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .right button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.navbar .right button:hover {
+    background-color: #4a5bd3;
+}
+
+        .status-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 100px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .status-box {
+            background-color: #0c0c0c;
+            border-radius: 8px;
+            text-align: center;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 10px;
+        }
+
+        .status-box h3 {
+            margin: 10px 0;
+        }
+
+        .status-box p {
+            margin: 5px 0;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+    <div class="left">
+        <img src="https://lains.win/lain.png" alt="Bot Avatar">
+        <span>lain</span>
+    </div>
+    <div class="middle">
+        <button onclick="location.href='https://lains.win/status'">Status</button>
+        <button onclick="location.href='https://lains.win/help'">Commands</button>
+        <button onclick="location.href='https://lains.win/faq'">FAQ</button>
+    </div>
+    <div class="right">
+        <button onclick="location.href='https://discord.com/invite/okay'">
+            <img src="https://lains.win/discord.png" alt="Discord Logo">
+            Discord
+        </button>
+    </div>
+</div>
+    <div class="status-container">
+
+        <div class="row">
+            <div class="status-box">
+                <h3>Shard 0</h3>
+                <p>Operational</p>
+                <p>Latency: 25</p>
+                <p>Servers: 191</p>
+                <p>Users: 29397</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="status-box">
+                <h3>Shard 1</h3>
+                <p>Operational</p>
+                <p>Latency: 25</p>
+                <p>Servers: 191</p>
+                <p>Users: 29397</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="status-box">
+                <h3>Shard 2</h3>
+                <p>Operational</p>
+                <p>Latency: 25</p>
+                <p>Servers: 191</p>
+                <p>Users: 29397</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="status-box">
+                <h3>Shard 3</h3>
+                <p>Operational</p>
+                <p>Latency: 25</p>
+                <p>Servers: 191</p>
+                <p>Users: 29397</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

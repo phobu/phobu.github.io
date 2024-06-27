@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lain</title>
+	<link rel="shortcut icon" href="https://lains.win/lain.png">
+</head>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&family=Work+Sans:wght@100;400&display=swap");
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #101010;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    animation: slideInFromBottom 1.5s forwards;
+}
+
+.avatar img {
+    width: 100%;
+    height: auto;
+}
+
+h1 {
+    font-family: Work Sans, sans-serif;
+    font-size: 15mm;
+    color: #e0e0e0;
+    margin-bottom: 5px;
+    opacity: 0;
+    animation: fadeInText 2s forwards;
+    animation-delay: 1s;
+}
+
+h2 {
+    font-family: Work Sans, sans-serif;
+    font-size: 1.2em;
+    color: #bfbfbf;
+    opacity: 0;
+    animation: fadeInText 2s forwards;
+    animation-delay: 1s;
+}
+
+.redirects {
+    text-align: center;
+    margin-top: 20px;
+    opacity: 0; /* Initially hidden */
+    animation: fadeInText 2s forwards;
+    animation-delay: 1s;
+}
+
+ul.horz-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+ul.horz-list li {
+    margin: 0;
+    padding: 0;
+}
+
+ul.horz-list li a {
+    display: inline-block;
+    border-radius: 15px;
+    padding: 8px 15px;
+    color: white;
+    text-decoration: none;
+    font-family: Work Sans, sans-serif;
+    font-size: 6mm;
+    background-color: #333;
+    margin-right: 5px;
+}
+
+ul.horz-list li:last-child a {
+    margin-right: 0;
+}
+
+ul.horz-list li a:hover {
+    color: #b8b8b8;
+    background-color: #4c4c4c;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="avatar">
+        <img src="https://lains.win/lain.png">
+    </div>
+    <h1>lain</h1>
+    <h2>serving 155,000+ users and 750+ servers</h2>
+    <div class="redirects">
+        <ul class="horz-list">
+            <li><a href="https://lains.win/help">cmds</a></li>
+            <li><a href="https://discord.com/oauth2/authorize?client_id=1110011733382287411&permissions=8&scope=bot/">invite</a></li>
+            <li><a href="https://discord.com/invite/okay">discord</a></li>
+        </ul>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            var elements = document.querySelectorAll('h1, h2, .redirects');
+            elements.forEach(function(element) {
+                element.style.opacity = '1';
+            });
+        }, 2500);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lain - commands</title>
+	<link rel="shortcut icon" href="https://lains.win/lain.png">
+ 	<link rel="stylesheet" href="https://lains.win/commands.css">
+
+    <script>
+        function copy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Copied to clipboard: ' + text);
+        }
+
+        function search() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const commandBoxes = document.getElementsByClassName('command-box');
+
+            Array.from(commandBoxes).forEach(box => {
+                const module = box.getAttribute('data-module').toLowerCase();
+                const name = box.getElementsByTagName('h3')[0].textContent.toLowerCase();
+                const description = box.getElementsByTagName('p')[0].textContent.toLowerCase();
+                const aliases = box.getElementsByTagName('p')[1].textContent.toLowerCase();
+
+                if (module.includes(filter) || name.includes(filter) || description.includes(filter) || aliases.includes(filter)) {
+                    box.style.display = '';
+                } else {
+                    box.style.display = 'none';
+                }
+            });
+        }
+
+        function filter(module) {
+            const commandBoxes = document.getElementsByClassName('command-box');
+
+            Array.from(commandBoxes).forEach(box => {
+                if (module === 'All' || box.getAttribute('data-module') === module) {
+                    box.style.display = '';
+                } else {
+                    box.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<body>
+    <div class="navbar">
+    <div class="left">
+        <img src="https://lains.win/lain.png" alt="Bot Avatar">
+        <span>lain</span>
+    </div>
+    <div class="middle">
+        <button onclick="location.href='https://lains.win/status'">Status</button>
+        <button onclick="location.href='https://lains.win/help'">Commands</button>
+        <button onclick="location.href='https://lains.win/faq'">FAQ</button>
+    </div>
+    <div class="right">
+        <button onclick="location.href='https://discord.com/invite/okay'">
+            <img src="https://lains.win/discord.png" alt="Discord Logo">
+            Discord
+        </button>
+    </div>
+</div>
+    <div class="separator"></div>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" onkeyup="search()" placeholder="Search for commands...">
+    </div>
+
+    <div class="tab-container">
+        <button class="tab" onclick="filter('All')">All</button><button class="tab" onclick="filter('automod')">Automod</button><button class="tab" onclick="filter('moderation')">Moderation</button><button class="tab" onclick="filter('economy')">Economy</button><button class="tab" onclick="filter('fun')">Fun</button><button class="tab" onclick="filter('information')">Information</button><button class="tab" onclick="filter('lastfm')">Lastfm</button><button class="tab" onclick="filter('miscellaneous')">Miscellaneous</button><button class="tab" onclick="filter('utility')">Utility</button><button class="tab" onclick="filter('music')">Music</button><button class="tab" onclick="filter('roleplay')">Roleplay</button><button class="tab" onclick="filter('servers')">Servers</button></div>
+<div class="command-box" data-module="automod">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('antibotadd')">
+    <h3>antibotadd</h3>
+    <p>Automatically ban suspicious bots</p>
+    <p>Aliases: antiba</p>
+</div>
+
+<div class="command-box" data-module="automod">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('antiraid')">
+    <h3>antiraid</h3>
+    <p>Automatically ban suspicious users</p>
+    <p>Aliases: antir</p>
+</div>
+
+<div class="command-box" data-module="automod">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('antiselfreact')">
+    <h3>antiselfreact</h3>
+    <p>Prevents users from reacting to their own messages</p>
+    <p>Aliases: antireact</p>
+</div>
+
+<div class="command-box" data-module="automod">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('chatfilter')">
+    <h3>chatfilter</h3>
+    <p>Manage the chat filter</p>
+    <p>Aliases: filter</p>
+</div>
+
+<div class="command-box" data-module="automod">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('disablecommand')">
+    <h3>disablecommand</h3>
+    <p>Disable a command</p>
+    <p>Aliases: disablecmd, disable</p>
+</div>
+
+<div class="command-box" data-module="automod">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('disablemodule')">
+    <h3>disablemodule</h3>
+    <p>Disable all commands in a module</p>
+    <p>Aliases: disablemod</p>
+</div>
+
+<div class="command-box" data-module="automod">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('enablecommand')">
+    <h3>enablecommand</h3>
+    <p>Enable a command</p>
+    <p>Aliases: enablecmd, enable</p>
+</div>
+
+<div class="command-box" data-module="automod">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('enablemodule')">
+    <h3>enablemodule</h3>
+    <p>Enable all commands in a module</p>
+    <p>Aliases: enablemod</p>
+</div>
+
+<div class="command-box" data-module="automod">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('filterinvites')">
+    <h3>filterinvites</h3>
+    <p>Prevent server invites from being sent</p>
+    <p>Aliases: antilink</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('trust')">
+    <h3>trust</h3>
+    <p>Trust a user to manaage automod features</p>
+    <p>Aliases: trust</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('addmany')">
+    <h3>addmany</h3>
+    <p>Add multiple emojis to the server</p>
+    <p>Aliases: addm, am</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('ban')">
+    <h3>ban</h3>
+    <p>Ban a member from the server</p>
+    <p>Aliases: deport</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('banlist')">
+    <h3>banlist</h3>
+    <p>Shows all banned users in the server</p>
+    <p>Aliases: bans</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('cleanup')">
+    <h3>cleanup</h3>
+    <p>Delete a certain amount of messages from bots</p>
+    <p>Aliases: clear, bc</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('embedclear')">
+    <h3>embedclear</h3>
+    <p>Clears all embeds in a channel</p>
+    <p>Aliases: clearembed, clearembeds</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('hidechannel')">
+    <h3>hidechannel</h3>
+    <p>Hide the channel</p>
+    <p>Aliases: hide</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('imageclear')">
+    <h3>imageclear</h3>
+    <p>Clears all images in a channel</p>
+    <p>Aliases: clearimage, clearimages</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('imagemute')">
+    <h3>imagemute</h3>
+    <p>Mute images for a specific user in the channel</p>
+    <p>Aliases: imute</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('imageunmute')">
+    <h3>imageunmute</h3>
+    <p>Unmute images for a specific user in the channel</p>
+    <p>Aliases: unmuteimage, unimagemute</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('jail')">
+    <h3>jail</h3>
+    <p>Jails a mentioned user</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('lockdown')">
+    <h3>lockdown</h3>
+    <p>Lock down the channel</p>
+    <p>Aliases: lock</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('mute')">
+    <h3>mute</h3>
+    <p>Mute a specific user in the channel</p>
+    <p>Aliases: shutup</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('muted')">
+    <h3>muted</h3>
+    <p>See how many users are muted</p>
+    <p>Aliases: mute</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('nickname')">
+    <h3>nickname</h3>
+    <p>Change the nickname of a user</p>
+    <p>Aliases: nick</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('nicknamereset')">
+    <h3>nicknamereset</h3>
+    <p>Reset the nickname of a user</p>
+    <p>Aliases: resetnickname, resetnick, nickreset</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('nuke')">
+    <h3>nuke</h3>
+    <p>Nuke the channel</p>
+    <p>Aliases: nukechannel</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('pinmessage')">
+    <h3>pinmessage</h3>
+    <p>Pin a message</p>
+    <p>Aliases: pin</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('purge')">
+    <h3>purge</h3>
+    <p>Mass delete messages</p>
+    <p>Aliases: clear, c</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('reactionmute')">
+    <h3>reactionmute</h3>
+    <p>Mute reactions for a specific user in the channel</p>
+    <p>Aliases: rmute</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('reactionunmute')">
+    <h3>reactionunmute</h3>
+    <p>Unmute reactions for a specific user in the channel</p>
+    <p>Aliases: unmutereaction, unreactionmute</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('roleall')">
+    <h3>roleall</h3>
+    <p>Give a role to all members</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('selfpurge')">
+    <h3>selfpurge</h3>
+    <p>Delete 100 of your own messages</p>
+    <p>Aliases: me</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('setupmod')">
+    <h3>setupmod</h3>
+    <p>Setup moderation settings for the server</p>
+    <p>Aliases: setme</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('slowmode')">
+    <h3>slowmode</h3>
+    <p>Set the slowmode of a channel</p>
+    <p>Aliases: sm</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('striproles')">
+    <h3>striproles</h3>
+    <p>Strip all of a user's roles</p>
+    <p>Aliases: strip</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('tempban')">
+    <h3>tempban</h3>
+    <p>Temporarily bans a user</p>
+    <p>Aliases: tban</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('topic')">
+    <h3>topic</h3>
+    <p>Set the channel topic</p>
+    <p>Aliases: settopic, setdescription</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unban')">
+    <h3>unban</h3>
+    <p>Unban a user</p>
+    <p>Aliases: unbanuser</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unbanall')">
+    <h3>unbanall</h3>
+    <p>Unban all members in the server</p>
+    <p>Aliases: unbanall</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unhidechannel')">
+    <h3>unhidechannel</h3>
+    <p>Unhide the channel</p>
+    <p>Aliases: unhide</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unjail')">
+    <h3>unjail</h3>
+    <p>Unjails a mentioned user</p>
+    <p>Aliases: ujail</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unlock')">
+    <h3>unlock</h3>
+    <p>Unlock the channel</p>
+    <p>Aliases: unlockdown, unlockchannel</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unmute')">
+    <h3>unmute</h3>
+    <p>Unmute a specific user in the channel</p>
+    <p>Aliases: unshutup</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('unpinmessage')">
+    <h3>unpinmessage</h3>
+    <p>Unpin a message</p>
+    <p>Aliases: unpin</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('vanityuses')">
+    <h3>vanityuses</h3>
+    <p>Check how many uses your vanity has</p>
+    <p>Aliases: uses</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('removejail')">
+    <h3>removejail</h3>
+    <p>Removes the jail setup from the server</p>
+    <p>Aliases: rjail</p>
+</div>
+
+<div class="command-box" data-module="moderation">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('setupjail')">
+    <h3>setupjail</h3>
+    <p>Sets up the jail role and channel</p>
+    <p>Aliases: setupj</p>
+</div>
+
+<div class="command-box" data-module="economy">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('balance')">
+    <h3>balance</h3>
+    <p>Check your balance and bank account</p>
+    <p>Aliases: bal</p>
+</div>
+
+<div class="command-box" data-module="economy">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('deposit')">
+    <h3>deposit</h3>
+    <p>Deposit money from your balance to your bank account</p>
+    <p>Aliases: dep</p>
+</div>
+
+<div class="command-box" data-module="economy">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('withdrawal')">
+    <h3>withdrawal</h3>
+    <p>Withdraw money from your bank account to your balance</p>
+    <p>Aliases: with</p>
+</div>
+
+<div class="command-box" data-module="fun">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('work')">
+    <h3>work</h3>
+    <p>Work to earn coins.</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="fun">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('divorce')">
+    <h3>divorce</h3>
+    <p>Divorce your partner</p>
+    <p>Aliases: dvc</p>
+</div>
+
+<div class="command-box" data-module="fun">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('joke')">
+    <h3>joke</h3>
+    <p>Get a random joke</p>
+    <p>Aliases: jk</p>
+</div>
+
+<div class="command-box" data-module="fun">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('marriage')">
+    <h3>marriage</h3>
+    <p>See who a user is married to</p>
+    <p>Aliases: married</p>
+</div>
+
+<div class="command-box" data-module="fun">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('marry')">
+    <h3>marry</h3>
+    <p>Marry a server member</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="fun">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('penis')">
+    <h3>penis</h3>
+    <p>Check the size of a mentioned user's imaginary penis.</p>
+    <p>Aliases: pp</p>
+</div>
+
+<div class="command-box" data-module="fun">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('uwuify')">
+    <h3>uwuify</h3>
+    <p>Uwuify a string of text</p>
+    <p>Aliases: uwu</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('about')">
+    <h3>about</h3>
+    <p>Shows information about the bo</p>
+    <p>Aliases: botinfo</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('avatar')">
+    <h3>avatar</h3>
+    <p>View a user's avatar</p>
+    <p>Aliases: av</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('banner')">
+    <h3>banner</h3>
+    <p>View a user's banner</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('checkvanity')">
+    <h3>checkvanity</h3>
+    <p>Check if a vanity URL is available</p>
+    <p>Aliases: checkurl</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('faq')">
+    <h3>faq</h3>
+    <p>Shows the FAQ of the bot</p>
+    <p>Aliases: faq</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('firstmembers')">
+    <h3>firstmembers</h3>
+    <p>Shows the first members to join the server</p>
+    <p>Aliases: recent</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('help')">
+    <h3>help</h3>
+    <p>Displays information about a command/module</p>
+    <p>Aliases: commands, h, cmds</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('invite')">
+    <h3>invite</h3>
+    <p>Get the invite link for the bot.</p>
+    <p>Aliases: inv</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('iplookup')">
+    <h3>iplookup</h3>
+    <p>Lookup information about an IP address</p>
+    <p>Aliases: ip</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('joinposition')">
+    <h3>joinposition</h3>
+    <p>See what # member you were</p>
+    <p>Aliases: joinpos</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('membercount')">
+    <h3>membercount</h3>
+    <p>View the server's member count</p>
+    <p>Aliases: mc, members</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('modules')">
+    <h3>modules</h3>
+    <p>List all modules</p>
+    <p>Aliases: listmodules</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('namehistory')">
+    <h3>namehistory</h3>
+    <p>View the name history of a user</p>
+    <p>Aliases: names</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('oldestmembers')">
+    <h3>oldestmembers</h3>
+    <p>Shows the oldest members in the server.</p>
+    <p>Aliases: oldest</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('ping')">
+    <h3>ping</h3>
+    <p>Get the bot's latency to discord</p>
+    <p>Aliases: ws</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('roles')">
+    <h3>roles</h3>
+    <p>Shows all roles in the server</p>
+    <p>Aliases: role</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('serverbanner')">
+    <h3>serverbanner</h3>
+    <p>Show the server banner.</p>
+    <p>Aliases: banner, sbnr</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('servericon')">
+    <h3>servericon</h3>
+    <p>Show the server icon.</p>
+    <p>Aliases: icon, sicon</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('serverinfo')">
+    <h3>serverinfo</h3>
+    <p>Return server information</p>
+    <p>Aliases: si</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('serversplash')">
+    <h3>serversplash</h3>
+    <p>Show the server splash.</p>
+    <p>Aliases: splash, sspl</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('status')">
+    <h3>status</h3>
+    <p>Shows the status of the bot</p>
+    <p>Aliases: status</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('subcommands')">
+    <h3>subcommands</h3>
+    <p>Shows the subcommands of a command</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('uptime')">
+    <h3>uptime</h3>
+    <p>Shows bot uptime.</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('usage')">
+    <h3>usage</h3>
+    <p>Shows the usage of a command</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('userinfo')">
+    <h3>userinfo</h3>
+    <p>Get information about a user</p>
+    <p>Aliases: ui, whois</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('variables')">
+    <h3>variables</h3>
+    <p>View the bot's variables</p>
+    <p>Aliases: vars</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('clearnames')">
+    <h3>clearnames</h3>
+    <p>Clears your name history</p>
+    <p>Aliases: clearnamehistory, clearnames</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('jumbo')">
+    <h3>jumbo</h3>
+    <p>Enlarge an emoji</p>
+    <p>Aliases: e, enlarge</p>
+</div>
+
+<div class="command-box" data-module="information">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('invites')">
+    <h3>invites</h3>
+    <p>Shows all the server's invites</p>
+    <p>Aliases: invs</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('lastfm')">
+    <h3>lastfm</h3>
+    <p>Interact with your music</p>
+    <p>Aliases: lf</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('nowplaying')">
+    <h3>nowplaying</h3>
+    <p>Shows your currently playing song</p>
+    <p>Aliases: fm, np, song</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('recent')">
+    <h3>recent</h3>
+    <p>Shows your most recent tracks</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('recommend')">
+    <h3>recommend</h3>
+    <p>Recommend a song based on your LastFM history</p>
+    <p>Aliases: rec</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('topalbums')">
+    <h3>topalbums</h3>
+    <p>View your top albums</p>
+    <p>Aliases: topal, tal</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('topartists')">
+    <h3>topartists</h3>
+    <p>View your top artists</p>
+    <p>Aliases: topar, ta</p>
+</div>
+
+<div class="command-box" data-module="lastfm">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('toptracks')">
+    <h3>toptracks</h3>
+    <p>View your top tracks</p>
+    <p>Aliases: topt, tt</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('anime')">
+    <h3>anime</h3>
+    <p>Search an Anime on Kitsu.io</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('appstore')">
+    <h3>appstore</h3>
+    <p>View an app on the app store</p>
+    <p>Aliases: playstore, app</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('cashapp')">
+    <h3>cashapp</h3>
+    <p>View a CashApp profile</p>
+    <p>Aliases: ca</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('fortnite')">
+    <h3>fortnite</h3>
+    <p>View fortnite related information</p>
+    <p>Aliases: fort, fn</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('gemini')">
+    <h3>gemini</h3>
+    <p>Generate text with prompts</p>
+    <p>Aliases: gpt, ask, chatgpt</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('giphy')">
+    <h3>giphy</h3>
+    <p>Search Giphy for a GIF.</p>
+    <p>Aliases: gif</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('github')">
+    <h3>github</h3>
+    <p>Get information from a github profile</p>
+    <p>Aliases: git, gh</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('imdb')">
+    <h3>imdb</h3>
+    <p>Get information on a series</p>
+    <p>Aliases: movie, series</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('instagram')">
+    <h3>instagram</h3>
+    <p>View an instagram profile</p>
+    <p>Aliases: insta, ig</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('playstation')">
+    <h3>playstation</h3>
+    <p>Search for a PlayStation profile</p>
+    <p>Aliases: psn</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('pokemon')">
+    <h3>pokemon</h3>
+    <p>View information about a Pokémon</p>
+    <p>Aliases: pokedex</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('snapchat')">
+    <h3>snapchat</h3>
+    <p>View a snapchat profile</p>
+    <p>Aliases: sc</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('steam')">
+    <h3>steam</h3>
+    <p>Search Steam for a game</p>
+    <p>Aliases: game</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('tiktok')">
+    <h3>tiktok</h3>
+    <p>View a tiktok profile</p>
+    <p>Aliases: tt</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('twitter')">
+    <h3>twitter</h3>
+    <p>View a twitter profile</p>
+    <p>Aliases: x</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('valorant')">
+    <h3>valorant</h3>
+    <p>Get information on a Valorant profile</p>
+    <p>Aliases: val</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('xbox')">
+    <h3>xbox</h3>
+    <p>Gets profile information on the given Xbox gamertag</p>
+    <p>Aliases: xb, xbl</p>
+</div>
+
+<div class="command-box" data-module="miscellaneous">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('youtube')">
+    <h3>youtube</h3>
+    <p>Searches YouTube for video query</p>
+    <p>Aliases: yt</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('steal')">
+    <h3>steal</h3>
+    <p>Steal an emoji</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('birthday')">
+    <h3>birthday</h3>
+    <p>See how far your birthday is</p>
+    <p>Aliases: bday</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('compress')">
+    <h3>compress</h3>
+    <p>Compresses the quality of the given image</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('convert')">
+    <h3>convert</h3>
+    <p>Converts a video file to an MP3</p>
+    <p>Aliases: </p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('createembed')">
+    <h3>createembed</h3>
+    <p>Create and send a custom embed message.</p>
+    <p>Aliases: ce</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('editsnipe')">
+    <h3>editsnipe</h3>
+    <p>View recently edited messages</p>
+    <p>Aliases: es</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('firstmessage')">
+    <h3>firstmessage</h3>
+    <p>View the channel's first message</p>
+    <p>Aliases: firstmsg</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('image')">
+    <h3>image</h3>
+    <p>Search for an image on google</p>
+    <p>Aliases: img</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('ocr')">
+    <h3>ocr</h3>
+    <p>Extract text from an image</p>
+    <p>Aliases: read</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('pingall')">
+    <h3>pingall</h3>
+    <p>Pings everyone in the server with 30 users per message</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('poll')">
+    <h3>poll</h3>
+    <p>Create a poll</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('rotate')">
+    <h3>rotate</h3>
+    <p>Rotates the given image by the specified degrees</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('snipe')">
+    <h3>snipe</h3>
+    <p>View a recently deleted message</p>
+    <p>Aliases: s</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('timezone')">
+    <h3>timezone</h3>
+    <p>View a location's timezone</p>
+    <p>Aliases: tz</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('translate')">
+    <h3>translate</h3>
+    <p>Translate text between languages</p>
+    <p>Aliases: tr</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('urban')">
+    <h3>urban</h3>
+    <p>Search </p>
+    <p>Aliases: ud</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('weather')">
+    <h3>weather</h3>
+    <p>Get the weather of a city</p>
+    <p>Aliases: wthr</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('wikipedia')">
+    <h3>wikipedia</h3>
+    <p>Search wiki for a query</p>
+    <p>Aliases: wiki</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('wolfram')">
+    <h3>wolfram</h3>
+    <p>Get math answers</p>
+    <p>Aliases: w</p>
+</div>
+
+<div class="command-box" data-module="utility">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('zip')">
+    <h3>zip</h3>
+    <p>Download all emojis and send in zip</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="music">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('itunes')">
+    <h3>itunes</h3>
+    <p>Search iTunes for a song</p>
+    <p>Aliases: itu</p>
+</div>
+
+<div class="command-box" data-module="music">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('soundcloud')">
+    <h3>soundcloud</h3>
+    <p>Search for a song on SoundCloud</p>
+    <p>Aliases: sc</p>
+</div>
+
+<div class="command-box" data-module="music">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('spotify')">
+    <h3>spotify</h3>
+    <p>Search spotify for a song</p>
+    <p>Aliases: sp</p>
+</div>
+
+<div class="command-box" data-module="roleplay">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('cuddle')">
+    <h3>cuddle</h3>
+    <p>Cuddle with a member</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="roleplay">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('feed')">
+    <h3>feed</h3>
+    <p>Feed a member</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="roleplay">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('hug')">
+    <h3>hug</h3>
+    <p>Hug a member</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="roleplay">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('kiss')">
+    <h3>kiss</h3>
+    <p>Kiss with a member</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="roleplay">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('slap')">
+    <h3>slap</h3>
+    <p>Slap a member</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="roleplay">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('tickle')">
+    <h3>tickle</h3>
+    <p>Tickle a member</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('autobanner')">
+    <h3>autobanner</h3>
+    <p>Automatically sends banners to a channel</p>
+    <p>Aliases: banners</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('autopfp')">
+    <h3>autopfp</h3>
+    <p>Automatically sends pfps to a channel</p>
+    <p>Aliases: pfps</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('autorole')">
+    <h3>autorole</h3>
+    <p>Manage autoroles for the server</p>
+    <p>Aliases: arl</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('embeds')">
+    <h3>embeds</h3>
+    <p>Make warning/approval messages embeds or messages</p>
+    <p>Aliases: embed</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('goodbye')">
+    <h3>goodbye</h3>
+    <p>Manage goodbye settings for the server.</p>
+    <p>Aliases: gb</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('pinterestboard')">
+    <h3>pinterestboard</h3>
+    <p>Search pins or view a user's pins on Pinterest</p>
+    <p>Aliases: pins</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('prefix')">
+    <h3>prefix</h3>
+    <p>Set the bot prefix for this server</p>
+    <p>Aliases: setprefix</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('reposters')">
+    <h3>reposters</h3>
+    <p>Toggle whether social media links are reposted</p>
+    <p>Aliases: reposter</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('stealbanner')">
+    <h3>stealbanner</h3>
+    <p>Steal the banner of another server</p>
+    <p>Aliases: stealb</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('stealicon')">
+    <h3>stealicon</h3>
+    <p>Steal the icon of another server using its invite</p>
+    <p>Aliases: steali</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('stealsplash')">
+    <h3>stealsplash</h3>
+    <p>Steal the splash of another server using its invite</p>
+    <p>Aliases: steals</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('ticket')">
+    <h3>ticket</h3>
+    <p>Set up ticketing system in a specific channel.</p>
+    <p>Aliases: none</p>
+</div>
+
+<div class="command-box" data-module="servers">
+    <img src="https://lains.win/copy.png" alt="Copy" class="copy-icon" onclick="copy('welcome')">
+    <h3>welcome</h3>
+    <p>Manage welcome settings for the server.</p>
+    <p>Aliases: welc</p>
+</div>
+</body>
+</html>
